@@ -15,6 +15,8 @@ public class JsonConfigRegistry extends AbstractConfigRegistry {
     private static final String EXT = ".json";
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting()
             .excludeFieldsWithModifiers(Modifier.STATIC, Modifier.TRANSIENT, Modifier.VOLATILE)
+            .serializeNulls()
+            .disableHtmlEscaping()
             .create();
 
 
