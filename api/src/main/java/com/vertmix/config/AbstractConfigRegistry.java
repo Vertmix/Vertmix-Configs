@@ -23,6 +23,14 @@ public abstract class AbstractConfigRegistry implements ConfigRegistry {
 
     @Override
     public <Type> Type register(Class<Type> clazz, Type instance, File file) {
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         registerData(clazz, instance, file);
 
         reload(clazz, instance, file);
